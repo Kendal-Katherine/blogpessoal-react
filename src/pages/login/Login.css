@@ -1,0 +1,23 @@
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.fundoLogin {
+  background-image: url("https://ik.imagekit.io/lcjdr9dex/login-animate.svg?updatedAt=1705614845271");
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.confetti-container {
+  width: 100%;
+  height: 100%;
+}
+
+
