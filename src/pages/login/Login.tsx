@@ -38,13 +38,13 @@ function Login() {
     }
     return (
         <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
+            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold  bg-fuchsia-300">
             <div className="fundoLogin hidden lg:block"></div>
                 <form className="flex justify-center items-center flex-col w-1/2 gap-4"
                     onSubmit={login}>
-                    <h2 className=" text-5xl text-white">Entrar</h2>
+                    <h2 className=" text-5xl ">Entrar</h2>
                     <div className="flex flex-col w-full  ">
-                        <label className=" text-white" htmlFor="usuario" >Usuário</label>
+                        <label htmlFor="usuario" >Usuário</label>
                         <input
                             type="text"
                             id="usuario"
@@ -56,7 +56,7 @@ function Login() {
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label className=" text-white" htmlFor="senha">Senha</label>
+                        <label  htmlFor="senha">Senha</label>
                         <input
                             type="password"
                             id="senha"
@@ -85,7 +85,7 @@ function Login() {
 
                     <hr className="border-slate-800 w-full" />
 
-                    <p className='text-white'>
+                    <p >
                         Ainda não tem uma conta?{' '}
                         <Link to="/cadastro" className="hover:underline">
                             Cadastre-se

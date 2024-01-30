@@ -5,6 +5,7 @@ import Postagem from '../../../models/Postagem';
 import Tema from '../../../models/Tema';
 import { buscar, atualizar, cadastrar } from '../../../services/Service';
 import { RotatingLines } from 'react-loader-spinner';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 
 
 function FormularioPostagem() {
@@ -59,7 +60,7 @@ function FormularioPostagem() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado');
+      ToastAlerta('Você precisa estar logado', 'info');
       navigate('/');
     }
   }, [token]);
@@ -106,14 +107,14 @@ function FormularioPostagem() {
             Authorization: token,
           },
         });
-        alert('Postagem atualizada com sucesso');
+        ToastAlerta('Postagem atualizada com sucesso', 'sucesso');
         retornar();
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('O token expirou, favor logar novamente')
+          ToastAlerta('O token expirou, favor logar novamente', 'info')
           handleLogout()
         } else {
-          alert('Erro ao atualizar a Postagem');
+          ToastAlerta('Erro ao atualizar a Postagem', 'erro');
         }
       }
     } else {
@@ -124,14 +125,14 @@ function FormularioPostagem() {
           },
         });
 
-        alert('Postagem cadastrada com sucesso');
+        ToastAlerta('Postagem cadastrada com sucesso', 'sucesso');
         retornar();
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('O token expirou, favor logar novamente')
+          ToastAlerta('O token expirou, favor logar novamente', 'info')
           handleLogout()
         } else {
-          alert('Erro ao cadastrar a Postagem');
+          ToastAlerta('Erro ao cadastrar a Postagem','erro');
         }
       }
     }
@@ -141,7 +142,7 @@ function FormularioPostagem() {
 
   return (
     <div className="container flex flex-col mx-auto items-center">
-      <h1 className="text-4xl text-center my-8 text-white font-bold">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
+      <h1 className="text-4xl text-center my-8  font-bold">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
 
       <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2 gap-4">
         <div className="flex flex-col gap-2">
@@ -170,7 +171,7 @@ function FormularioPostagem() {
         </div>
         <div className="flex flex-col gap-2">
           <p>Tema da postagem</p>
-          <select name="tema" id="tema" className='border p-2 border-black rounded' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
+          <select name="tema" id="tema" className='border-2 p-2 border-black rounded' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
             <option value="" selected disabled>Selecione um tema</option>
             {temas.map((tema) => (
               <>

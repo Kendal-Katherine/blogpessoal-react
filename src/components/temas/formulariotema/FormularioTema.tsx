@@ -4,6 +4,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Tema from "../../../models/Tema";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormTema() {
 
@@ -24,7 +25,7 @@ function FormTema() {
             })
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                alert('O token Expirou!')
+                ToastAlerta('O token Expirou!', 'info')
                 handleLogout()
             }
         }
@@ -32,7 +33,7 @@ function FormTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!')
+            ToastAlerta('Você precisa estar logado!', 'info')
             navigate('/login')
         }
     }, [token])
@@ -63,13 +64,13 @@ function FormTema() {
                 await atualizar(`/tema`, tema, setTema, {
                     headers: { 'Authorization': token }
                 })
-                alert('O Tema foi atualizado com sucesso!')
+                ToastAlerta('O Tema foi atualizado com sucesso!', 'sucesso')
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    alert('O Token Expirou!')
+                    ToastAlerta('O Token Expirou!', 'info')
                     handleLogout();
                 } else {
-                    alert('Erro ao atualizar o tema.')
+                    ToastAlerta('Erro ao atualizar o tema.', 'erro')
                 }
 
             }
@@ -78,13 +79,13 @@ function FormTema() {
                 await cadastrar(`/tema`, tema, setTema, {
                     headers: { 'Authorization': token }
                 })
-                alert('O Tema foi cadastrado com sucesso!')
+                ToastAlerta('O Tema foi cadastrado com sucesso!', 'sucesso')
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    alert('O Token Expirou!')
+                    ToastAlerta('O Token Expirou!', 'info')
                     handleLogout();
                 } else {
-                    alert('Erro ao cadastrar o tema.')
+                    ToastAlerta('Erro ao cadastrar o tema.', 'erro')
                 }
 
             }
@@ -96,13 +97,13 @@ function FormTema() {
 
     return (
         <div className="container flex flex-col items-center justify-center mx-auto">
-            <h1 className="text-4xl text-center my-8 text-white font-bold">
+            <h1 className="text-4xl text-center my-8  font-bold">
                 {id === undefined ? 'Cadastrar Tema' : 'Editar Tema'}
             </h1>
 
             <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="descricao" className="text-white font-bold">Descrição do Tema</label>
+                    <label htmlFor="descricao" className=" font-bold">Descrição do Tema</label>
                     <input
                         type="text"
                         placeholder="Descreva aqui seu tema"

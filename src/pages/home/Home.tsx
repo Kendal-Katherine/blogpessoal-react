@@ -1,13 +1,24 @@
+import { useRef } from "react";
 import ListaPostagens from "../../components/postagens/listapostagens/ListaPostagens"
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem"
 
 function Home() {
+
+    const postagensRef = useRef<HTMLDivElement>(null);
+
+    const scrollParaPostagens = () => {
+        if (postagensRef.current) {
+            postagensRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
 
     return (
         <>
             <div id="container" className="
                 flex 
                 justify-center 
+                bg-fuchsia-300
                                 ">
                 <div id="subcontainer" className="
                     container 
@@ -41,7 +52,7 @@ function Home() {
                                border border-black rounded hover:bg-fuchsia-700 hover:text-white
                                 px-4 
                                 py-2
-                                "> 
+                                " onClick={scrollParaPostagens}> 
                                 Ver Postagens
                                 </button>
                         </div>
@@ -59,7 +70,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <ListaPostagens />
+            <ListaPostagens ref={postagensRef}/>
 
         </>
     )

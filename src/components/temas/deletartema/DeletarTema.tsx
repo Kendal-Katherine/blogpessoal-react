@@ -4,6 +4,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Tema from "../../../models/Tema";
 import { buscar, deletar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarTema() {
 
@@ -24,7 +25,7 @@ function DeletarTema() {
             })
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                alert('O token Expirou!')
+                ToastAlerta('O token Expirou!', 'info')
                 handleLogout()
             }
         }
@@ -32,7 +33,7 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!')
+            ToastAlerta('Você precisa estar logado!', 'info')
             navigate('/login')
         }
     }, [token])
@@ -55,13 +56,13 @@ function DeletarTema() {
             await deletar(`/tema/${id}`, {
                 headers: { 'Authorization': token }
             })
-            alert('O Tema foi excluído com sucesso!')
+            ToastAlerta('O Tema foi excluído com sucesso!', 'sucesso')
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                alert('O Token Expirou!')
+                ToastAlerta('O Token Expirou!', 'info')
                 handleLogout();
             } else {
-                alert('Erro ao excluir o tema.')
+                ToastAlerta('Erro ao excluir o tema.', 'erro')
             }
 
         }
@@ -72,8 +73,8 @@ function DeletarTema() {
 
     return (
         <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4 font-bold text-white'>Deletar tema</h1>
-            <p className='text-center text-white mb-4 font-bold'>
+            <h1 className='text-4xl text-center my-4 font-bold '>Deletar tema</h1>
+            <p className='text-center  mb-4 font-bold'>
                 Você tem certeza de que deseja apagar o tema a seguir?</p>
             <div className='border border-black flex flex-col rounded-2xl overflow-hidden justify-between'>
                 <header

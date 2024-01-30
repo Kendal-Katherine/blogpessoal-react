@@ -8,9 +8,9 @@ interface CardPostagemProps {
 
 function CardPostagem({post}: CardPostagemProps) {
   return (
-    <div className='border-black border flex flex-col  rounded-2xl justify-between'>
+    <div className='border-black border flex flex-col justify-between'>
       <div>
-        <div className="flex w-full bg-fuchsia-700 py-2 px-4 items-center gap-4">
+        <div className= " flex w-full bg-fuchsia-700 py-2 px-4 items-center gap-4">
           <img src={post.usuario?.foto} className='h-12 rounded-full' alt="" />
           <h3 className='text-lg font-bold text-center uppercase text-white'>{post.usuario?.nome}</h3>
         </div>

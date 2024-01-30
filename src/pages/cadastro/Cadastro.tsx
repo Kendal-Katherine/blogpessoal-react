@@ -68,14 +68,14 @@ function Cadastro() {
     return (
         <>
             <div className="grid grid-cols-1 lg:grid-cols-2 h-screen 
-            place-items-center font-bold bg-fuchsia-500">
+            place-items-center font-bold bg-fuchsia-300">
                 <div className="fundoCadastro hidden lg:block  "></div>
                 <form
                     className='flex justify-center items-center flex-col w-2/3 gap-3'
                     onSubmit={cadastrarNovoUsuario}>
-                    <h2 className='text-5xl text-white'>Cadastrar</h2>
+                    <h2 className='text-5xl '>Cadastrar</h2>
                     <div className="flex flex-col w-full ">
-                        <label className=" text-white" htmlFor="nome">Nome</label>
+                        <label  htmlFor="nome">Nome</label>
                         <input
                             type="text"
                             id="nome"
@@ -87,7 +87,7 @@ function Cadastro() {
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label className=" text-white" htmlFor="usuario">Usuario</label>
+                        <label  htmlFor="usuario">Usuario</label>
                         <input
                             type="text"
                             id="usuario"
@@ -99,19 +99,19 @@ function Cadastro() {
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label className=" text-white" htmlFor="foto">Foto</label>
+                        <label  htmlFor="foto">Foto</label>
                         <input
                             type="text"
                             id="foto"
                             name="foto"
-                            placeholder="Foto"
+                            placeholder="Link da sua foto"
                             className="border-2 border-slate-700 rounded p-2"
                             value={usuario.foto}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label className=" text-white" htmlFor="senha">Senha</label>
+                        <label  htmlFor="senha">Senha</label>
                         <input
                             type="password"
                             id="senha"
@@ -123,7 +123,7 @@ function Cadastro() {
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label className=" text-white" htmlFor="confirmarSenha">Confirmar Senha</label>
+                        <label htmlFor="confirmarSenha">Confirmar Senha</label>
                         <input
                             type="password"
                             id="confirmarSenha"
