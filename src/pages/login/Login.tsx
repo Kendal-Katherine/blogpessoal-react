@@ -38,7 +38,7 @@ function Login() {
     }
     return (
         <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold bg-fuchsia-500">
+            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
             <div className="fundoLogin hidden lg:block"></div>
                 <form className="flex justify-center items-center flex-col w-1/2 gap-4"
                     onSubmit={login}>

@@ -8,7 +8,7 @@ import Home from './pages/home/Home'
 import Login from './pages/login/Login'
 import ListaTemas from './components/temas/listatemas/ListaTemas'
 import FormTema from './components/temas/formulariotema/FormularioTema'
-import DeletarTema from './components/temas/deletartema/DeletarTema'
+import DeletarTema from './components/temas/deletarTema/DeletarTema'
 
 
 function App() {

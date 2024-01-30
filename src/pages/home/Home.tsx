@@ -6,13 +6,12 @@ function Home() {
             <div id="container" className="
                 flex 
                 justify-center 
-                bg-fuchsia-500
-                ">
+                                ">
                 <div id="subcontainer" className="
                     container 
                     grid 
                     grid-cols-2 
-                    text-white
+                    
                     ">
                     <div id="texto" className="
                         flex 
@@ -35,8 +34,6 @@ function Home() {
                             ">
                             <div className="
                                 rounded 
-                                text-white 
-                                border-white 
                                 border-solid 
                                 border-2 
                                 px-4 
