@@ -98,7 +98,7 @@ function Login() {
                     </div>
                 )}
 
-                <div className="fundoLogin hidden lg:block "></div>
+               
             </div>
             
         </>

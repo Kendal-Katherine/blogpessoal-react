@@ -1,3 +1,5 @@
+import ListaPostagens from "../../components/postagens/listapostagens/ListaPostagens"
+import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem"
 
 function Home() {
 
@@ -32,15 +34,16 @@ function Home() {
                             justify-around 
                             gap-4
                             ">
-                            <div className="
-                                rounded 
-                                border-solid 
-                                border-2 
+                                 <ModalPostagem />
+                        
+
+                            <button className="
+                               border border-black rounded hover:bg-fuchsia-700 hover:text-white
                                 px-4 
                                 py-2
-                                ">
-                                Nova Postagem
-                            </div>
+                                "> 
+                                Ver Postagens
+                                </button>
                         </div>
                     </div>
 
@@ -56,6 +59,8 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <ListaPostagens />
+
         </>
     )
 }
