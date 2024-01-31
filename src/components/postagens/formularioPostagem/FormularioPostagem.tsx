@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
+import  { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 import Postagem from '../../../models/Postagem';
@@ -6,6 +6,7 @@ import Tema from '../../../models/Tema';
 import { buscar, atualizar, cadastrar } from '../../../services/Service';
 import { RotatingLines } from 'react-loader-spinner';
 import { ToastAlerta } from '../../../utils/ToastAlerta';
+import Confetti from 'react-confetti-boom';
 
 
 function FormularioPostagem() {
@@ -14,6 +15,7 @@ function FormularioPostagem() {
   const { id } = useParams<{ id: string }>();
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
@@ -107,8 +109,16 @@ function FormularioPostagem() {
             Authorization: token,
           },
         });
+       
+        setShowConfetti(true);
+
         ToastAlerta('Postagem atualizada com sucesso', 'sucesso');
-        retornar();
+
+        setTimeout(() => {
+          setShowConfetti(false); // Redefinir o estado após 2 segundos
+          retornar();
+        }, 2000);
+        
       } catch (error: any) {
         if (error.toString().includes('403')) {
           ToastAlerta('O token expirou, favor logar novamente', 'info')
@@ -125,8 +135,14 @@ function FormularioPostagem() {
           },
         });
 
+        setShowConfetti(true);
+
         ToastAlerta('Postagem cadastrada com sucesso', 'sucesso');
-        retornar();
+
+        setTimeout(() => {
+          setShowConfetti(false); // Redefinir o estado após 2 segundos
+          retornar();
+        }, 2000);
       } catch (error: any) {
         if (error.toString().includes('403')) {
           ToastAlerta('O token expirou, favor logar novamente', 'info')
@@ -138,12 +154,14 @@ function FormularioPostagem() {
     }
   }
 
-  const carregandoTema = tema.descricao === '';
+  
 
   return (
     <div className="container flex flex-col mx-auto items-center">
       <h1 className="text-4xl text-center my-8  font-bold">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
-
+      
+      {showConfetti && <Confetti />}
+      
       <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2 gap-4">
         <div className="flex flex-col gap-2">
           <label htmlFor="titulo">Titulo da postagem</label>

@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom"
 import Usuario from "../../models/Usuario"
 import { cadastrarUsuario } from "../../services/Service"
 import { RotatingLines } from "react-loader-spinner"
+import ConfettiExplosion from 'confetti-explosion-react';
+
 
 
 function Cadastro() {
 
     const navigate = useNavigate()
+    const [isExploding, setIsExploding] = useState(false);
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [confirmaSenha, setConfirmaSenha] = useState<string>("")
@@ -23,7 +26,13 @@ function Cadastro() {
 
     useEffect(() => {
         if (usuario.id !== 0) {
+            setIsExploding(true);
+           
+            setTimeout(() => {
+            setIsExploding(false);
             retornar()
+            }, 3000); // Tempo em milissegundos que os confetes ficarão ativos
+            
         }
     }, [usuario])
 
@@ -75,7 +84,7 @@ function Cadastro() {
                     onSubmit={cadastrarNovoUsuario}>
                     <h2 className='text-5xl '>Cadastrar</h2>
                     <div className="flex flex-col w-full ">
-                        <label  htmlFor="nome">Nome</label>
+                        <label htmlFor="nome">Nome</label>
                         <input
                             type="text"
                             id="nome"
@@ -87,7 +96,7 @@ function Cadastro() {
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label  htmlFor="usuario">Usuario</label>
+                        <label htmlFor="usuario">Usuario</label>
                         <input
                             type="text"
                             id="usuario"
@@ -99,7 +108,7 @@ function Cadastro() {
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label  htmlFor="foto">Foto</label>
+                        <label htmlFor="foto">Foto</label>
                         <input
                             type="text"
                             id="foto"
@@ -111,7 +120,7 @@ function Cadastro() {
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label  htmlFor="senha">Senha</label>
+                        <label htmlFor="senha">Senha</label>
                         <input
                             type="password"
                             id="senha"
@@ -156,6 +165,11 @@ function Cadastro() {
 
                     </div>
                 </form>
+                {isExploding && (
+                    <div className="absolute inset-0 flex items-center justify-center confetti-container">
+                        <ConfettiExplosion />
+                    </div>
+                )}
             </div>
         </>
     )
