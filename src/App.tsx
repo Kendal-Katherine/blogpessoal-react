@@ -10,13 +10,13 @@ import Home from './pages/home/Home';
 import { AuthProvider } from './contexts/AuthContext';
 import FormularioPostagem from './components/postagens/formularioPostagem/FormularioPostagem';
 import ListaPostagens from './components/postagens/listapostagens/ListaPostagens';
-import DeletarTema from './components/temas/deletartema/DeletarTema';
 import FormularioTema from './components/temas/formulariotema/FormularioTema';
 import ListaTemas from './components/temas/listatemas/ListaTemas';
 import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import Perfil from './pages/perfil/Perfil';
+import DeletarTema from './components/temas/deletarTema/DeletarTema';
 
 
 function App() {
